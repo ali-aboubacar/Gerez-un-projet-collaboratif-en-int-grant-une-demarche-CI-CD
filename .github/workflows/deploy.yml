@@ -20,4 +20,6 @@ jobs:
           distrubition: 'temurin'
           java-version: '17'
           cache: maven
-          
+      - name: Build & Test Backend with Maven
+        working-directory: backend
+        run: mvn clean test

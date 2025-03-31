@@ -21,5 +21,5 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build & Test Backend with Maven
-        working-directory: backend
+        working-directory: back
         run: mvn clean test

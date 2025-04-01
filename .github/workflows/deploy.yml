@@ -23,3 +23,17 @@ jobs:
       - name: Build & Test Backend with Maven
         working-directory: back
         run: mvn clean test
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      
+      - name: Install Frontend dependencies
+        working-directory: front
+        run: npm install
+
+      - name: Run Frontend Tests
+        working-directory: front
+        run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless

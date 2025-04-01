@@ -44,11 +44,11 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: | 
           # Install SonarScanner
-          curl -sSLo sonar-scanner.zip https://github.com/SonarSource/sonar-scanner-cli/releases/download/4.6.2.2472/sonar-scanner-cli-4.6.2.2472-linux.zip
+          curl -sSLo sonar-scanner.zip https://github.com/SonarSource/sonar-scanner-cli/releases/download/4.8.1.3023/sonar-scanner-cli-4.8.1.3023-linux.zip
           unzip -o sonar-scanner.zip -d /opt
 
           # Run SonarQube Scanner
-          /opt/sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner \
+          /opt/sonar-scanner-4.8.1.3023-linux/bin/sonar-scanner \
             -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \
             -Dsonar.sources=front,back \
             -Dsonar.host.url=https://sonarcloud.io

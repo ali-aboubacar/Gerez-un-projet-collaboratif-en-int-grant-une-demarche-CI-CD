@@ -42,15 +42,5 @@ jobs:
       - name: SonarQube scan
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: | 
-          # Install SonarScanner
-          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-          unzip -o sonar-scanner.zip -d /opt
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
 
-          # Run SonarQube Scanner
-          /opt/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
-            -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \
-            -Dsonar.sources=front,back \
-            -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.java.binaries=back/target/classes
-            -Dsonar.typescript.tsconfigPath=front/tsconfig.json

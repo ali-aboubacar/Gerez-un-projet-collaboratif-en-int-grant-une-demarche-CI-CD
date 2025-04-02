@@ -40,6 +40,7 @@ jobs:
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
 
       - name: SonarQube scan
+        working-directory: back
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD

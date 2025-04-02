@@ -62,5 +62,5 @@ jobs:
         run: docker build -t bobapp-front . 
 
       - name: Push Frontend Docker Image
-        run: docker push bobapp-front
+        run: docker push ${{secrets.DOCKER_USERNAME}}/bobapp-front
 

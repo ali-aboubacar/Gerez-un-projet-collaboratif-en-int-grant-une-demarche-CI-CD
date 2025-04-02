@@ -59,8 +59,8 @@ jobs:
 
       - name: Build Frontend Docker Image
         working-directory: front
-        run: docker build -t bobapp-front . 
+        run: docker build -t aboubacar269/bobapp-front . 
 
       - name: Push Frontend Docker Image
-        run: docker push ${{secrets.DOCKER_USERNAME}}/bobapp-front
+        run: docker push aboubacar269/bobapp-front
 

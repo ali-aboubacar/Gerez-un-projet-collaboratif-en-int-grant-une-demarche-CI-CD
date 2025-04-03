@@ -8,7 +8,7 @@ on:
 
 jobs:
   test_and_analyze:
-    name: Run Tests & SonarQube Analysis
+    name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +39,23 @@ jobs:
       - name: Run Frontend Tests
         working-directory: front
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+  
+  sonarqube_scan:
+    name: sonarqube scan
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+
+      - name: install dependencies
+        run: npm install
+        
       - name: SonarQube scan Backend
         working-directory: back
         env: 

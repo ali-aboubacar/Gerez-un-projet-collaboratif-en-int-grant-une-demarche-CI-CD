@@ -47,6 +47,7 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
       
       - name: SonarQube scan Frontend
+        uses: SonarSource/sonarcloud-github-action@v2
         working-directory: front
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

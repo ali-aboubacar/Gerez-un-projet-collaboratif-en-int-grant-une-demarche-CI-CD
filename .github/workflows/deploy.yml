@@ -7,7 +7,7 @@ on:
       - dev/gitActions
 
 jobs:
-  test_and_analyze:
+  tests:
     name: Run Tests
     runs-on: ubuntu-latest
 
@@ -43,7 +43,7 @@ jobs:
   sonarqube_scan:
     name: sonarqube scan
     runs-on: ubuntu-latest
-
+    needs: tests
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
@@ -53,9 +53,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-
-      - name: install dependencies
-        run: npm install
 
       - name: SonarQube scan Backend
         working-directory: back
@@ -78,7 +75,7 @@ jobs:
   build_and_push_frontend:
     name: Build & Push Frontend Docker Image
     runs-on: ubuntu-latest
-    needs: test_and_analyze
+    needs: sonarqube_scan
 
     steps:
       - name: checkout Repository
@@ -97,7 +94,7 @@ jobs:
   build_and_push_backend:
     name: Build & Push Backend DOcker Image
     runs-on: ubuntu-latest
-    needs: test_and_analyze
+    needs: sonarqube_scan
 
     steps:
       - name: Checkout Repository

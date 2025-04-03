@@ -50,6 +50,11 @@ jobs:
         working-directory: front
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          Sonar-scanner \
+            -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \
+            -Dsonar.host.url=https://sonarcloud.io 
+
 
 
   build_and_push_frontend:

@@ -52,9 +52,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: > 
-            -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \
-            -Dsonar.organisation=bobapp-openclassroom \
-            -Dsonar.sources=src \ 
+            -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+            -Dsonar.organisation=bobapp-openclassroom 
+            -Dsonar.sources=front/src 
             -Dsonar.host.url=https://sonarcloud.io 
 
 

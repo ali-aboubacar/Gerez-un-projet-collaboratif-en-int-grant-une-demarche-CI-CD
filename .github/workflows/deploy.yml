@@ -46,6 +46,15 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEN }}
         run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapps_backend 
       
+      - name: install sonar scanner
+        run: npm install -g @sonar/scan
+
+      - name: SonarQube scan Frontend
+        working-directory: front
+        run: sonar \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.token=${{ secrets.SONAR_TOKEN_FRONTEND }}
+
 
   build_and_push_frontend:
     name: Build & Push Frontend Docker Image

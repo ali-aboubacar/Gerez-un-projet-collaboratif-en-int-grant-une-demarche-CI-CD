@@ -3,6 +3,7 @@ name: CI/CD with Sonarqube & Docker
 on:
   push:
     branches:
+      - main
       - dev/gitActions
 
 jobs:

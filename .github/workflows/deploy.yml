@@ -43,22 +43,9 @@ jobs:
       - name: SonarQube scan Backend
         working-directory: back
         env: 
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD -Dsonar.organization=bobapp-openclassroom -Dsonar.host.url=https://sonarcloud.io  
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEN }}
+        run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapps_backend 
       
-      - name: SonarQube scan Frontend
-        uses: SonarSource/sonarcloud-github-action@v2
-        env: 
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: > 
-            -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
-            -Dsonar.organization=bobapp-openclassroom 
-            -Dsonar.sources=front/src 
-            -Dsonar.host.url=https://sonarcloud.io 
-
-
-
 
   build_and_push_frontend:
     name: Build & Push Frontend Docker Image

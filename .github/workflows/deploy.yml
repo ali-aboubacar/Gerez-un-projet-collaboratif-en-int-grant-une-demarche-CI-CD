@@ -54,9 +54,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: install dependencies
-        run: npm install
-
       - name: SonarQube scan Backend
         working-directory: back
         env: 
@@ -97,7 +94,7 @@ jobs:
         run: docker push aboubacar269/bobapp-front
 
   build_and_push_backend:
-    name: Build & Push Backend DOcker Image
+    name: Build & Push Backend Docker Image
     runs-on: ubuntu-latest
     needs: sonarqube_scan
 

@@ -53,6 +53,8 @@ jobs:
         run: |
           Sonar-scanner \
             -Dsonar.projectKey=ali-aboubacar_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \
+            -Dsonar.organisation=bobapp-openclassroom \
+            -Dsonar.sources=src \ 
             -Dsonar.host.url=https://sonarcloud.io 
 
 

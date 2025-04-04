@@ -61,10 +61,7 @@ jobs:
         run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapps_backend 
       
       - name: install sonar scanner
-        run: npm install -g sonar-scanner
-
-      - name: Add SonarScanner to PATH
-        run: echo "$(npm root -g)/.bin" >> $GITHUB_PATH
+        run: npm install -g @sonar/scan
 
       - name: SonarQube scan Frontend
         working-directory: front
@@ -72,7 +69,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
           JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.14-7/x64
           PATH: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.14-7/x64/bin:${{ env.PATH }}
-        run: sonar-scanner \
+        run: sonar \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.token=${{ secrets.SONAR_TOKEN_FRONTEND }}
 

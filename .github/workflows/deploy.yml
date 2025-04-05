@@ -86,7 +86,6 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.token=${{ secrets.SONAR_TOKEN_FRONTEND }}
 
-
   build_and_push_frontend:
     name: Build & Push Frontend Docker Image
     runs-on: ubuntu-latest

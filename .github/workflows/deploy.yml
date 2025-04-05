@@ -74,6 +74,7 @@ jobs:
         working-directory: front
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
+          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.14-7/x64  # Ensure the correct path is used
         run: |
           npm install -g @sonar/scan
           echo "JAVA_HOME=$JAVA_HOME"

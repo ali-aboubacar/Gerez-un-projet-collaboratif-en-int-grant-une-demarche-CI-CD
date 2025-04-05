@@ -76,10 +76,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
           JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.14-7/x64  # Ensure the correct path is used
         run: |
-          npm install -g @sonar/scan
+          npm install -g sonarqube-scanner
           echo "JAVA_HOME=$JAVA_HOME"
           java -version
-          sonar \
+          sonar-scanner \
             -Dsonar.projectKey=bobapps_frontend \
             -Dsonar.organization=bobapps \
             -Dsonar.sources=src \

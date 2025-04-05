@@ -63,14 +63,18 @@ jobs:
       - name: Install dependencies
         working-directory: front
         run: npm ci
-        
+
       - name: install sonar scanner
         run: npm install -g @sonar/scan
+      
+      - name: Set Java Home (Java 17)
+        run: echo "JAVA_HOME=/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17*/x64" >> $GITHUB_ENV
 
       - name: SonarQube scan Frontend
         working-directory: front
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
+          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.14-7/x64
         run: sonar \
           -Dsonar.token=${{ secrets.SONAR_TOKEN_FRONTEND }}
 

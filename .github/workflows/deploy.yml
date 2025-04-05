@@ -51,17 +51,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: SonarQube scan Frontend
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
+
+
       # - name: SonarQube scan Backend
       #   working-directory: back
       #   env: 
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEN }}
       #   run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapps_backend 
           
-      - name: SonarQube scan Frontend
-        working-directory: front
-        uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
 
   build_and_push_frontend:
     name: Build & Push Frontend Docker Image

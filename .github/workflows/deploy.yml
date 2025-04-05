@@ -55,8 +55,7 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
-
-          
+   
       - name: SonarQube scan Backend
         working-directory: back
         env: 

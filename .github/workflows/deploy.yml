@@ -59,7 +59,7 @@ jobs:
           
       - name: SonarQube scan Frontend
         working-directory: ./front
-        uses: SonarSource/sonarqube-scan-action@v5
+        run: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
 

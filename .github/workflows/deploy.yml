@@ -55,6 +55,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEN }}
         run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapps_backend 
       
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:

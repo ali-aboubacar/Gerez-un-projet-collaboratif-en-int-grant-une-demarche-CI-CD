@@ -58,7 +58,11 @@ jobs:
         with:
           projectBaseDir: front
           args: > 
+            -Dsonar.projectKey=bobapps_frontend
+            -Dsonar.sources=src
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.organization=bobapps
 
       - name: SonarQube scan Backend
         working-directory: back

@@ -40,12 +40,6 @@ jobs:
       - name: Run Frontend Tests
         working-directory: front
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
-      
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v4
-        with:
-          name: frontend-coverage
-          path: front/coverage/lcov.info
 
 
   sonarqube_scan:
@@ -58,25 +52,10 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Download frontend coverage
-        uses: actions/download-artifact@v4
-        with:
-          name: frontend-coverage
-          path: front/coverage
-
-
       - name: SonarQube scan Frontend
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
-        with:
-          projectBaseDir: front
-          args: > 
-            -Dsonar.projectKey=bobapps_frontend
-            -Dsonar.sources=src
-            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
-            -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.organization=bobapps
 
       - name: SonarQube scan Backend
         working-directory: back

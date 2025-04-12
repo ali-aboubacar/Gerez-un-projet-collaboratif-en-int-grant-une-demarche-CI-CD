@@ -48,7 +48,7 @@ jobs:
           path: front/coverage/
 
       - name: Debug artifact files
-        run: ls -R ./coverage
+        run: ls -R front/coverage
 
 
   sonarqube_scan:

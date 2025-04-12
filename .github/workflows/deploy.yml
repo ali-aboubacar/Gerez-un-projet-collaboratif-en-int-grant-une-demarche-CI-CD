@@ -47,6 +47,9 @@ jobs:
           name: frontend-coverage
           path: front/coverage/
 
+      - name: Debug artifact files
+        run: ls -R ./coverage
+
 
   sonarqube_scan:
     name: sonarqube scan

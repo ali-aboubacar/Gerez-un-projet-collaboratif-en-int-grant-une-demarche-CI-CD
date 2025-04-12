@@ -60,6 +60,15 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
+      # Cacher les packages Maven pour une exécution plus rapide
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+          
       - name: SonarQube scan Frontend
         uses: SonarSource/sonarqube-scan-action@v5
         env:

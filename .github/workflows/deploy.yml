@@ -40,7 +40,14 @@ jobs:
       - name: Run Frontend Tests
         working-directory: front
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
-  
+      
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: front/coverage/lcov.info
+
+
   sonarqube_scan:
     name: sonarqube scan
     runs-on: ubuntu-latest
@@ -50,6 +57,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      
+      - name: Download frontend coverage
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-coverage
+          path: front/coverage
+
 
       - name: SonarQube scan Frontend
         uses: SonarSource/sonarqube-scan-action@v5

@@ -55,7 +55,10 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
-   
+        with:
+          args: > 
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+
       - name: SonarQube scan Backend
         working-directory: back
         env: 

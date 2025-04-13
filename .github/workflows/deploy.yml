@@ -56,7 +56,9 @@ jobs:
       - name: Run Frontend Tests
         working-directory: front
         run: npm run test -- --code-coverage --no-watch --no-progress --browsers=ChromeHeadless
-
+     
+      - name: List coverage output
+        run: ls -R front/coverage
 
   sonarqube_scan:
     name: sonarqube scan

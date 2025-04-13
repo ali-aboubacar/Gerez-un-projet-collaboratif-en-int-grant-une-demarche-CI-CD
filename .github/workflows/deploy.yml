@@ -78,6 +78,8 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
+      - name: List coverage output
+        run: ls -R front/coverage
           
       - name: SonarQube scan Frontend
         uses: SonarSource/sonarqube-scan-action@v5

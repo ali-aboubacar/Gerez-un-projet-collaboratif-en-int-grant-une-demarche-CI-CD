@@ -90,7 +90,7 @@ jobs:
           name: frontend-coverage
           path: front/coverage
 
-          
+
       - name: List coverage output
         run: ls -R front/coverage
           
@@ -103,7 +103,7 @@ jobs:
         working-directory: back
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEN }}
-        run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapps_backend 
+        run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapps_backend -Dsonar.projectName=backend
           
 
   build_and_push_frontend:

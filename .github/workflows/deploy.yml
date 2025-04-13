@@ -60,6 +60,12 @@ jobs:
       - name: List coverage output
         run: ls -R front/coverage
 
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: front/coverage/
+
   sonarqube_scan:
     name: sonarqube scan
     runs-on: ubuntu-latest
@@ -78,6 +84,13 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
+      - name: Download frontend coverage
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-coverage
+          path: front/coverage
+
+          
       - name: List coverage output
         run: ls -R front/coverage
           

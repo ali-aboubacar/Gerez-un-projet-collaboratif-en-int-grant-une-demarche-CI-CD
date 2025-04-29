@@ -59,16 +59,12 @@ jobs:
 
       # Cacher les packages SonarCloud pour une exécution plus rapide
       - name: Cache SonarCloud packages
-        id: cache-sonar
         uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
           key: sonar-${{ runner.os }}-${{ hashFiles('**/pom.xml', '**/package-lock.json') }}
           restore-keys: |
             sonar-${{ runner.os }}-
-
-      - name: Check if cache was hit
-        run: echo "Cache hit? ${{ steps.cache-sonar.outputs.cache-hit }}"
 
       - name: Download frontend coverage
         uses: actions/download-artifact@v4
@@ -102,10 +98,10 @@ jobs:
 
       - name: Build Frontend Docker Image
         working-directory: front
-        run: docker build -t aboubacar269/bobapp-front . 
+        run: docker build -t ${{secrets.DOCKER_USERNAME}}/bobapp-front . 
 
       - name: Push Frontend Docker Image
-        run: docker push aboubacar269/bobapp-front
+        run: docker push ${{secrets.DOCKER_USERNAME}}/bobapp-front
 
   build_and_push_backend:
     name: Build & Push Backend Docker Image
@@ -121,7 +117,7 @@ jobs:
 
       - name: Build Backend Docker Image
         working-directory: back
-        run: docker build -t aboubacar269/bobapp-back .
+        run: docker build -t ${{secrets.DOCKER_USERNAME}}/bobapp-back .
 
       - name: Push Backend Docker Image
-        run: docker push aboubacar269/bobapp-back
+        run: docker push ${{secrets.DOCKER_USERNAME}}/bobapp-back

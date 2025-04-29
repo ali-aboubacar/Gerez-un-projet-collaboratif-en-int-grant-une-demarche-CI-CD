@@ -59,8 +59,6 @@ jobs:
 
       # Cacher les packages SonarCloud pour une exécution plus rapide
       - name: Cache SonarCloud packages
-        run: echo "Cache hit? ${{ steps.cache-sonar.outputs.cache-hit }}"
-        id: cache-sonar
         uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
@@ -68,6 +66,9 @@ jobs:
           restore-keys: |
             sonar-${{ runner.os }}-
 
+      - name: Check if cache was hit
+        run: echo "Cache hit? ${{ steps.cache-sonar.outputs.cache-hit }}"
+        
       - name: Download frontend coverage
         uses: actions/download-artifact@v4
         with:

@@ -59,6 +59,8 @@ jobs:
 
       # Cacher les packages SonarCloud pour une exécution plus rapide
       - name: Cache SonarCloud packages
+        run: echo "Cache hit? ${{ steps.cache-sonar.outputs.cache-hit }}"
+        id: cache-sonar
         uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
@@ -80,7 +82,7 @@ jobs:
       - name: SonarQube scan Backend
         working-directory: back
         env: 
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
         run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
          -Dsonar.projectKey=bobapps_backend \
          -Dsonar.projectName=backend

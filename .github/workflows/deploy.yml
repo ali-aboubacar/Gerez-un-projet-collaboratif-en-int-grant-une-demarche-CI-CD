@@ -85,9 +85,7 @@ jobs:
         working-directory: back
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
-        run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-         -Dsonar.projectKey=bobapps_backend \
-         -Dsonar.projectName=backend
+        run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapps_backend -Dsonar.projectName=backend
           
 
   build_and_push_frontend:

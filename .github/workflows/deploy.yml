@@ -84,7 +84,7 @@ jobs:
       - name: SonarQube scan Backend
         working-directory: back
         env: 
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEN }}
         run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapps_backend -Dsonar.projectName=backend
           
 

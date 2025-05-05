@@ -47,6 +47,7 @@ jobs:
           name: frontend-coverage
           path: front/coverage/
 
+
   sonarqube_scan:
     name: sonarqube scan
     runs-on: ubuntu-latest

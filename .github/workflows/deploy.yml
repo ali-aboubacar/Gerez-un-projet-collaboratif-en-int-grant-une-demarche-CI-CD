@@ -141,7 +141,7 @@ jobs:
 
       - name: Deploy with SSH
         run: |
-          ssh -o StrictHostKeyChecking=no root@178.62.54.206 << 'EOF'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER }} << 'EOF'
             cd /root/bobapp
             # Pull the latest images
             docker compose pull

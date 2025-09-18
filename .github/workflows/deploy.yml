@@ -143,6 +143,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER }} << 'EOF'
             cd /root/bobapp
+            docker compose down
             # Pull the latest images
             docker compose pull
             # Restart services
